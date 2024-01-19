@@ -23,17 +23,10 @@ app.get("/", (req, res) => {
   res.render("home");
 });
 
-// app.get("/seed/place", async (req, res) => {
-//   const place = new Place({
-//     title: "Machu Picchu",
-//     price: "100",
-//     description: "A beautiful place",
-//     location: "Peru",
-//   });
-
-//   await place.save();
-//   res.send(place);
-// });
+app.get("/places", async (req, res) => {
+  const places = await Place.find();
+  res.render("places/index", { places });
+});
 
 app.listen(3000, () => {
   console.log(`Server is running on http://127.0.0.1:3000`);
