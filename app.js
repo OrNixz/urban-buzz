@@ -58,6 +58,11 @@ app.put("/places/:id", async (req, res) => {
   res.redirect("/places");
 });
 
+app.delete("/places/:id", async (req, res) => {
+  await Place.findByIdAndDelete(req.params.id);
+  res.redirect("/places");
+});
+
 app.listen(3000, () => {
   console.log(`Server is running on http://127.0.0.1:3000`);
 });
