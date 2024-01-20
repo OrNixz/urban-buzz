@@ -9,7 +9,7 @@
     <h1>Whole Places</h1>
     <ul>
         <% for (const place of places) { %>
-            <li><%= place.title %></li>
+            <li><a href="/places/<%= place._id %>"><%= place.title %></a></li>
         <% } %>
     </ul>
 </body>
