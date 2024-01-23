@@ -22,7 +22,7 @@ app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-// Middleware
+// Global Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
@@ -39,10 +39,14 @@ app.get("/places/create", (req, res) => {
   res.render("places/create");
 });
 
-app.post("/places", async (req, res) => {
-  const place = new Place(req.body.place);
-  await place.save();
-  res.redirect("/places");
+app.post("/places", async (req, res, next) => {
+  try {
+    const place = new Place(req.body.place);
+    await place.save();
+    res.redirect("/places");
+  } catch (error) {
+    next(error);
+  }
 });
 
 app.get("/places/:id", async (req, res) => {
@@ -63,6 +67,11 @@ app.put("/places/:id", async (req, res) => {
 app.delete("/places/:id", async (req, res) => {
   await Place.findByIdAndDelete(req.params.id);
   res.redirect("/places");
+});
+
+// Error Handling
+app.use((err, req, res, next) => {
+  res.status(500).send("Something broke!");
 });
 
 app.listen(3000, () => {
