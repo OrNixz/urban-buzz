@@ -1,10 +1,21 @@
 <% layout("layouts/app") %>
-<h1><%= place.title %></h1>
-<h2><%= place.location %></h2>
-<img src="<%= place.image %>" alt="">
-<p><%= place.description %></p>
-<form action="/places/<%= place._id %>?_method=DELETE" method="POST" style="display:inline!important;">
-    <button type="submit">Delete</button>
-</form>
-<a href="/places">All Places</a>
-<a href="/places/<%= place._id %>/edit">Edit</a>
+<div class="row">
+    <div class="col-6 offset-3">
+        <div class="card">
+            <img src="<%= place.image %>" alt="<%= place.title %>" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title"><%= place.title %></h5>
+                <p class="card-text"><%= place.description %></p>
+                <ul class="list-group list-group-flash">
+                    <li class="list-group-item"><b>Price:</b> <%= place.price %></li>
+                    <li class="list-group-item"><b>Location:</b> <%= place.location %></li>
+                </ul>
+            </div>
+            <div class="card-body d-flex justify-content-end">
+                <a href="/places/<%= place._id %>/edit" class="btn btn-warning text-white" style="margin-right: 0.5rem;">Edit</a>
+                <form action="/places/<%= place._id %>?_method=DELETE" method="POST" class="d-inline">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
