@@ -1,29 +1,81 @@
 <% layout("layouts/app") %>
 <h2 class="text-center mb-3 pb-3">Add Place</h2>
 <div class="col-6 offset-3">
-    <form action="/places" method="POST">
+    <form action="/places" method="POST" class="needs-validation" novalidate>
         <div>
             <label for="title" class="form-label">Title: </label>
-            <input type="text" name="place[title]" id="title" class="form-control">
+            <input type="text" name="place[title]" id="title" class="form-control" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            <div class="invalid-feedback">
+                Please provide a valid title.
+            </div>
         </div><br>
         <div>
             <label for="price" class="form-label">Price: </label>
-            <input type="text" name="place[price]" id="price" class="form-control">
+            <input type="text" name="place[price]" id="price" class="form-control" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            <div class="invalid-feedback">
+                Please provide a valid price.
+            </div>
         </div><br>
         <div>
             <label for="description" class="form-label">Description: </label>
-            <textarea name="place[description]" id="description" cols="30" rows="10" class="form-control"></textarea>
+            <textarea name="place[description]" id="description" cols="30" rows="10" class="form-control" required></textarea>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            <div class="invalid-feedback">
+                Please provide a valid description.
+            </div>
         </div><br>
         <div>
             <label for="location" class="form-label">Location: </label>
-            <input type="text" name="place[location]" id="location" class="form-control">
+            <input type="text" name="place[location]" id="location" class="form-control" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            <div class="invalid-feedback">
+                Please provide a valid location.
+            </div>
         </div><br>
         <div>
             <label for="image" class="form-label">Image URL: </label>
-            <input type="text" name="place[image]" id="image" class="form-control">
+            <input type="text" name="place[image]" id="image" class="form-control" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            <div class="invalid-feedback">
+                Please provide a valid image URL.
+            </div>
         </div><br>
         <div class="d-flex justify-content-end mt-2">
             <button type="submit" class="btn btn-success">Save</button>
         </div>
     </form>
 </div>
+
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+(() => {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+</script>
