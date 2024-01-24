@@ -1,5 +1,6 @@
 const ejsMate = require("ejs-mate");
 const express = require("express");
+const ErrorHandler = require("./utils/ErrorHandler");
 const methodOverride = require("method-override");
 const wrapAsync = require("./utils/wrapAsync");
 const mongoose = require("mongoose");
@@ -88,9 +89,16 @@ app.delete(
   })
 );
 
+// 404 Error Handling
+app.all("*", (req, res, next) => {
+  next(new ErrorHandler("Page Not Found", 404));
+});
+
 // Error Handling
 app.use((err, req, res, next) => {
-  res.status(500).send("Something broke!");
+  const { statusCode = 500 } = err;
+  if (!err.message) err.message = "Something went wrong";
+  res.status(statusCode).render("error", { err });
 });
 
 app.listen(3000, () => {
