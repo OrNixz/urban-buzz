@@ -11,6 +11,9 @@ const app = express();
 // Models
 const Place = require("./models/place");
 
+// Schemas
+const { placeSchema } = require("./schemas/place");
+
 // Connect to MongoDB
 mongoose
   .connect("mongodb://127.0.0.1/urbanbuzz")
@@ -28,6 +31,17 @@ app.set("views", path.join(__dirname, "views"));
 // Global Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
+
+// Validate Place Middleware
+const validatePlace = (req, res, next) => {
+  const { error } = placeSchema.validate(req.body);
+  if (error) {
+    const message = error.details.map((el) => el.message).join(",");
+    return next(new ErrorHandler(message, 400));
+  } else {
+    next();
+  }
+};
 
 app.get("/", (req, res) => {
   res.render("home");
@@ -47,23 +61,8 @@ app.get("/places/create", (req, res) => {
 
 app.post(
   "/places",
+  validatePlace,
   wrapAsync(async (req, res, next) => {
-    const placeSchema = Joi.object({
-      place: Joi.object({
-        title: Joi.string().required(),
-        price: Joi.number().min(0).required(),
-        description: Joi.string().required(),
-        location: Joi.string().required(),
-        image: Joi.string().required(),
-      }).required(),
-    });
-
-    const { error } = placeSchema.validate(req.body);
-    if (error) {
-      console.log(error);
-      return next(new ErrorHandler(error, 400));
-    }
-
     const place = new Place(req.body.place);
     await place.save();
     res.redirect("/places");
@@ -88,6 +87,7 @@ app.get(
 
 app.put(
   "/places/:id",
+  validatePlace,
   wrapAsync(async (req, res) => {
     await Place.findByIdAndUpdate(req.params.id, { ...req.body.place });
     res.redirect("/places");
