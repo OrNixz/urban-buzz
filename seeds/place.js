@@ -14,7 +14,7 @@ async function seedPlaces() {
   const places = [
     {
       title: "Eiffel Tower",
-      price: "25",
+      price: 25,
       description:
         "Iconic iron lattice structure in Paris, offering breathtaking views of the city.",
       location: "Paris, France",
@@ -22,7 +22,7 @@ async function seedPlaces() {
     },
     {
       title: "Grand Canyon",
-      price: "20",
+      price: 20,
       description:
         "Magnificent natural wonder with deep canyons and stunning rock formations.",
       location: "Arizona, USA",
@@ -30,7 +30,7 @@ async function seedPlaces() {
     },
     {
       title: "Machu Picchu",
-      price: "30",
+      price: 30,
       description:
         "Ancient Incan citadel nestled high in the Andes, known for its archaeological significance.",
       location: "Cusco Region, Peru",
@@ -38,7 +38,7 @@ async function seedPlaces() {
     },
     {
       title: "Great Barrier Reef",
-      price: "40",
+      price: 40,
       description:
         "World's largest coral reef system, home to diverse marine life and vibrant coral formations.",
       location: "Queensland, Australia",
@@ -46,7 +46,7 @@ async function seedPlaces() {
     },
     {
       title: "Tokyo Disneyland",
-      price: "55",
+      price: 55,
       description:
         "Magical theme park with attractions inspired by Disney characters, a favorite for families.",
       location: "Tokyo, Japan",
@@ -54,7 +54,7 @@ async function seedPlaces() {
     },
     {
       title: "Serengeti National Park",
-      price: "35",
+      price: 35,
       description:
         "Vast wildlife reserve in Tanzania, renowned for the annual migration of wildebeest and zebras.",
       location: "Tanzania",
@@ -62,7 +62,7 @@ async function seedPlaces() {
     },
     {
       title: "Taj Mahal",
-      price: "22",
+      price: 22,
       description:
         "Majestic marble mausoleum, a symbol of eternal love, located in Agra.",
       location: "Uttar Pradesh, India",
@@ -70,7 +70,7 @@ async function seedPlaces() {
     },
     {
       title: "The Colosseum",
-      price: "28",
+      price: 28,
       description:
         "Ancient amphitheater in Rome, known for gladiator contests and historic significance.",
       location: "Rome, Italy",
@@ -78,7 +78,7 @@ async function seedPlaces() {
     },
     {
       title: "Banff National Park",
-      price: "32",
+      price: 32,
       description:
         "Canadian Rockies gem offering stunning mountain scenery, lakes, and wildlife.",
       location: "Alberta, Canada",
@@ -86,7 +86,7 @@ async function seedPlaces() {
     },
     {
       title: "Petra",
-      price: "26",
+      price: 26,
       description:
         "Historical city carved into rose-red cliffs of southern Jordan, a UNESCO World Heritage Site.",
       location: "Ma'an Governorate, Jordan",
@@ -94,7 +94,7 @@ async function seedPlaces() {
     },
     {
       title: "Sydney Opera House",
-      price: "45",
+      price: 45,
       description:
         "Architectural marvel and iconic performing arts venue on Sydney's harbor.",
       location: "Sydney, Australia",
@@ -102,7 +102,7 @@ async function seedPlaces() {
     },
     {
       title: "Yellowstone National Park",
-      price: "38",
+      price: 38,
       description:
         "First national park in the world, known for geothermal wonders and diverse wildlife.",
       location: "Wyoming, USA",
@@ -110,7 +110,7 @@ async function seedPlaces() {
     },
     {
       title: "Dubai Burj Khalifa",
-      price: "50",
+      price: 50,
       description:
         "Tallest building in the world, dominating the skyline of Dubai.",
       location: "Dubai, United Arab Emirates",
@@ -118,7 +118,7 @@ async function seedPlaces() {
     },
     {
       title: "The Louvre",
-      price: "18",
+      price: 18,
       description:
         "World's largest art museum and historic monument in Paris, home to thousands of artworks.",
       location: "Paris, France",
@@ -126,7 +126,7 @@ async function seedPlaces() {
     },
     {
       title: "Victoria Falls",
-      price: "30",
+      price: 30,
       description:
         "Majestic waterfall on the Zambezi River, bordering Zambia and Zimbabwe.",
       location: "Livingstone, Zambia",
@@ -134,7 +134,7 @@ async function seedPlaces() {
     },
     {
       title: "Antelope Canyon",
-      price: "25",
+      price: 25,
       description:
         "Narrow slot canyon with stunning rock formations and light beams.",
       location: "Arizona, USA",
@@ -142,7 +142,7 @@ async function seedPlaces() {
     },
     {
       title: "Marrakech Medina",
-      price: "22",
+      price: 22,
       description:
         "Historic walled city with vibrant markets, palaces, and gardens in Morocco.",
       location: "Marrakech, Morocco",
@@ -150,7 +150,7 @@ async function seedPlaces() {
     },
     {
       title: "Giza Pyramids",
-      price: "24",
+      price: 24,
       description:
         "Ancient Egyptian structures including the Great Pyramid of Giza and Sphinx.",
       location: "Giza, Egypt",
@@ -158,7 +158,7 @@ async function seedPlaces() {
     },
     {
       title: "Galápagos Islands",
-      price: "55",
+      price: 55,
       description:
         "Archipelago of volcanic islands, known for unique wildlife and Charles Darwin's studies.",
       location: "Ecuador",
@@ -166,7 +166,7 @@ async function seedPlaces() {
     },
     {
       title: "Great Wall of China",
-      price: "40",
+      price: 40,
       description:
         "Ancient wall spanning thousands of miles, built to protect China from invaders.",
       location: "China",

@@ -15,18 +15,19 @@
                 <a href="/places/<%= place._id %>/edit" class="btn btn-warning text-white" style="margin-right: 0.5rem;">Edit</a>
                 <form action="/places/<%= place._id %>?_method=DELETE" method="POST" class="d-inline">
                     <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
             </div>
         </div>
     </div>
     <div class="col-5">
         <h4 class="mb-3">Leave a review</h4>
-        <form action="">
+        <form action="/places/<%= place._id %>/reviews" method="POST">
             <div class="mb-3">
-                <label for="rating">Rating</label>
+                <label for="rating" class="form-label">Rating</label>
                 <input type="range" name="review[rating]" id="rating" min="1" max="5" class="form-range">
             </div>
             <div class="mb-3">
-                <label for="body">Review</label>
+                <label for="body" class="form-label">Review</label>
                 <textarea name="review[body]" id="body" cols="30" rows="5" class="form-control"></textarea>
             </div>
             <div class="d-flex justify-content-end">
