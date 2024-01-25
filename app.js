@@ -14,6 +14,7 @@ const Review = require("./models/review");
 
 // Schemas
 const { placeSchema } = require("./schemas/place");
+const { reviewSchema } = require("./schemas/review");
 
 // Connect to MongoDB
 mongoose
@@ -36,6 +37,17 @@ app.use(methodOverride("_method"));
 // Validate Place Middleware
 const validatePlace = (req, res, next) => {
   const { error } = placeSchema.validate(req.body);
+  if (error) {
+    const message = error.details.map((el) => el.message).join(",");
+    return next(new ErrorHandler(message, 400));
+  } else {
+    next();
+  }
+};
+
+// Validate Review Middleware
+const validateReview = (req, res, next) => {
+  const { error } = reviewSchema.validate(req.body);
   if (error) {
     const message = error.details.map((el) => el.message).join(",");
     return next(new ErrorHandler(message, 400));
@@ -105,6 +117,7 @@ app.delete(
 
 app.post(
   "/places/:id/reviews",
+  validateReview,
   wrapAsync(async (req, res) => {
     const review = new Review(req.body.review);
     const place = await Place.findById(req.params.id);

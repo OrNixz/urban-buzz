@@ -21,14 +21,20 @@
     </div>
     <div class="col-5">
         <h4 class="mb-3">Leave a review</h4>
-        <form action="/places/<%= place._id %>/reviews" method="POST">
+        <form action="/places/<%= place._id %>/reviews" method="POST" class="needs-validation" novalidate>
             <div class="mb-3">
                 <label for="rating" class="form-label">Rating</label>
                 <input type="range" name="review[rating]" id="rating" min="1" max="5" class="form-range">
             </div>
             <div class="mb-3">
                 <label for="body" class="form-label">Review</label>
-                <textarea name="review[body]" id="body" cols="30" rows="5" class="form-control"></textarea>
+                <textarea name="review[body]" id="body" cols="30" rows="5" class="form-control" required></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please provide a valid review.
+                </div>
             </div>
             <div class="d-flex justify-content-end">
                 <button type="submit" class="btn btn-success">Submit</button>
