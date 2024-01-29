@@ -1,6 +1,7 @@
 const ejsMate = require("ejs-mate");
 const express = require("express");
 const ErrorHandler = require("./utils/ErrorHandler");
+const flash = require("connect-flash");
 const methodOverride = require("method-override");
 const mongoose = require("mongoose");
 const path = require("path");
@@ -37,6 +38,13 @@ app.use(
     },
   })
 );
+app.use(flash());
+
+app.use((req, res, next) => {
+  res.locals.success = req.flash("success");
+  res.locals.error = req.flash("error");
+  next();
+});
 
 app.get("/", (req, res) => {
   res.render("home");
