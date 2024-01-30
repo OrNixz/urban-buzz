@@ -22,7 +22,7 @@ const validateReview = (req, res, next) => {
 };
 
 // Middleware for checking if ID is valid
-const isValidObjectId = require("../middleware/isValidObjectId");
+const isValidObjectId = require("../middlewares/isValidObjectId");
 
 router.post(
   "/",
