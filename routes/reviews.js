@@ -21,8 +21,12 @@ const validateReview = (req, res, next) => {
   }
 };
 
+// Middleware for checking if ID is valid
+const isValidObjectId = require("../middleware/isValidObjectId");
+
 router.post(
   "/",
+  isValidObjectId("/places"),
   validateReview,
   wrapAsync(async (req, res) => {
     const review = new Review(req.body.review);
@@ -37,6 +41,7 @@ router.post(
 
 router.delete(
   "/:review_id",
+  isValidObjectId("/places"),
   wrapAsync(async (req, res) => {
     const { place_id, review_id } = req.params;
     await Place.findByIdAndUpdate(place_id, { $pull: { reviews: review_id } });

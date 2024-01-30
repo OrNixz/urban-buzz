@@ -20,6 +20,9 @@ const validatePlace = (req, res, next) => {
   }
 };
 
+// Middleware for checking if ID is valid
+const isValidObjectId = require("../middleware/isValidObjectId");
+
 router.get(
   "/",
   wrapAsync(async (req, res) => {
@@ -45,6 +48,7 @@ router.post(
 
 router.get(
   "/:id",
+  isValidObjectId("/places"),
   wrapAsync(async (req, res) => {
     const place = await Place.findById(req.params.id).populate("reviews");
     res.render("places/show", { place });
@@ -53,6 +57,7 @@ router.get(
 
 router.get(
   "/:id/edit",
+  isValidObjectId("/places"),
   wrapAsync(async (req, res) => {
     const place = await Place.findById(req.params.id);
     res.render("places/edit", { place });
@@ -61,6 +66,7 @@ router.get(
 
 router.put(
   "/:id",
+  isValidObjectId("/places"),
   validatePlace,
   wrapAsync(async (req, res) => {
     await Place.findByIdAndUpdate(req.params.id, { ...req.body.place });
@@ -71,6 +77,7 @@ router.put(
 
 router.delete(
   "/:id",
+  isValidObjectId("/places"),
   wrapAsync(async (req, res) => {
     await Place.findByIdAndDelete(req.params.id);
     req.flash("success", "Successfully deleted place!");
