@@ -10,18 +10,17 @@ router.get("/register", (req, res) => {
 router.post(
   "/register",
   wrapAsync(async (req, res) => {
-    res.send(req.body);
+    try {
+      const { email, username, password } = req.body;
+      const user = new User({ email, username });
+      await User.register(user, password);
+      req.flash("success", "You are now registered! Please login.");
+      res.redirect("/places");
+    } catch (error) {
+      req.flash("error", error.message);
+      res.redirect("/register");
+    }
   })
 );
 
 module.exports = router;
-
-// app.get("/register", async (req, res) => {
-//   const user = new User({
-//     email: "user@gmail.com",
-//     username: "user",
-//   });
-
-//   const newUser = await User.register(user, "password");
-//   res.send(newUser);
-// });
