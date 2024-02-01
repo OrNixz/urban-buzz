@@ -1,7 +1,7 @@
 <% layout("layouts/app") %>
-<h2 class="text-center mb-3 pb-3">Register</h2>
+<h2 class="text-center mb-3 pb-3">Login</h2>
 <div class="col-6 col-lg-4 offset-3 offset-lg-4">
-    <form action="/register" method="POST" class="needs-validation" novalidate>
+    <form action="/login" method="POST" class="needs-validation" novalidate>
         <div>
             <label for="username" class="form-label">Username: </label>
             <input type="text" name="username" id="username" class="form-control" required>
@@ -10,16 +10,6 @@
             </div>
             <div class="invalid-feedback">
                 Please provide a valid username.
-            </div>
-        </div><br>
-        <div>
-            <label for="email" class="form-label">Email: </label>
-            <input type="email" name="email" id="email" class="form-control" required>
-            <div class="valid-feedback">
-                Looks good!
-            </div>
-            <div class="invalid-feedback">
-                Please provide a valid email.
             </div>
         </div><br>
         <div>
@@ -33,7 +23,7 @@
             </div>
         </div><br>
         <div class="d-flex justify-content-end mt-2">
-            <button type="submit" class="btn btn-success">Register</button>
+            <button type="submit" class="btn btn-success">Login</button>
         </div>
     </form>
 </div>
