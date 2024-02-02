@@ -42,4 +42,14 @@ router.post(
   }
 );
 
+router.post("/logout", (req, res) => {
+  req.logout(function (err) {
+    if (err) { 
+      return next(err); 
+    }
+    req.flash("success", "You are now logged out!");
+    res.redirect("/login");
+  })
+})
+
 module.exports = router;
