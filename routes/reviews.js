@@ -24,9 +24,13 @@ const validateReview = (req, res, next) => {
 // Middleware for checking if ID is valid
 const isValidObjectId = require("../middlewares/isValidObjectId");
 
+// Middleware for checking if user is authenticated
+const isAuth = require("../middlewares/isAuth");
+
 router.post(
   "/",
   isValidObjectId("/places"),
+  isAuth,
   validateReview,
   wrapAsync(async (req, res) => {
     const review = new Review(req.body.review);
@@ -41,6 +45,7 @@ router.post(
 
 router.delete(
   "/:review_id",
+  isAuth,
   isValidObjectId("/places"),
   wrapAsync(async (req, res) => {
     const { place_id, review_id } = req.params;
