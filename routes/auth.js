@@ -36,7 +36,8 @@ router.post(
       type: "error",
       message: "Invalid username or password.",
     },
-  }), (req, res) => {
+  }),
+  (req, res) => {
     req.flash("success", "You are now logged in!");
     res.redirect("/places");
   }
@@ -44,12 +45,12 @@ router.post(
 
 router.post("/logout", (req, res) => {
   req.logout(function (err) {
-    if (err) { 
-      return next(err); 
+    if (err) {
+      return next(err);
     }
     req.flash("success", "You are now logged out!");
     res.redirect("/login");
-  })
-})
+  });
+});
 
 module.exports = router;
