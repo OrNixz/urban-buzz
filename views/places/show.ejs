@@ -12,12 +12,14 @@
                     <li class="list-group-item"><b>Author:</b> <%= place.author.username %></li>
                 </ul>
             </div>
+            <% if (currentUser && place.author.equals(currentUser._id)) { %>
             <div class="card-body d-flex justify-content-end">
                 <a href="/places/<%= place._id %>/edit" class="btn btn-warning text-white" style="margin-right: 0.5rem;">Edit</a>
                 <form action="/places/<%= place._id %>?_method=DELETE" method="POST" class="d-inline">
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
             </div>
+            <% } %>
         </div>
     </div>
     <div class="col-5">
