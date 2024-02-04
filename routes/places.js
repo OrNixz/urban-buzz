@@ -26,6 +26,9 @@ const isValidObjectId = require("../middlewares/isValidObjectId");
 // Middleware for checking if user is authenticated
 const isAuth = require("../middlewares/isAuth");
 
+// Middleware for checking if user is author of place
+const { isAuthorPlace } = require("../middlewares/isAuthor");
+
 router.get(
   "/",
   wrapAsync(async (req, res) => {
@@ -64,6 +67,7 @@ router.get(
 router.get(
   "/:id/edit",
   isAuth,
+  isAuthorPlace,
   isValidObjectId("/places"),
   wrapAsync(async (req, res) => {
     const place = await Place.findById(req.params.id);
@@ -74,18 +78,11 @@ router.get(
 router.put(
   "/:id",
   isAuth,
+  isAuthorPlace,
   isValidObjectId("/places"),
   validatePlace,
   wrapAsync(async (req, res) => {
-    const { id } = req.params;
-    let place = await Place.findById(id);
-
-    if (!place.author.equals(req.user._id)) {
-      req.flash("error", "You do not have permission to do that!");
-      return res.redirect(`/places`);
-    }
-
-    await Place.findByIdAndUpdate(id, { ...req.body.place });
+    await Place.findByIdAndUpdate(req.params.id, { ...req.body.place });
     req.flash("success", "Successfully updated place!");
     res.redirect(`/places/${id}`);
   })
@@ -94,6 +91,7 @@ router.put(
 router.delete(
   "/:id",
   isAuth,
+  isAuthorPlace,
   isValidObjectId("/places"),
   wrapAsync(async (req, res) => {
     await Place.findByIdAndDelete(req.params.id);
