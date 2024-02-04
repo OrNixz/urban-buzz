@@ -27,6 +27,9 @@ const isValidObjectId = require("../middlewares/isValidObjectId");
 // Middleware for checking if user is authenticated
 const isAuth = require("../middlewares/isAuth");
 
+// Middleware for checking if user is author of review
+const { isAuthorReview } = require("../middlewares/isAuthor");
+
 router.post(
   "/",
   isValidObjectId("/places"),
@@ -51,6 +54,7 @@ router.post(
 router.delete(
   "/:review_id",
   isAuth,
+  isAuthorReview,
   isValidObjectId("/places"),
   wrapAsync(async (req, res) => {
     const { place_id, review_id } = req.params;
