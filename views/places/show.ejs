@@ -23,6 +23,7 @@
         </div>
     </div>
     <div class="col-5">
+        <% if (currentUser) { %>
         <h4 class="mb-3">Leave a review</h4>
         <form action="/places/<%= place._id %>/reviews" method="POST" class="needs-validation mb-5" novalidate>
             <div class="mb-3">
@@ -43,6 +44,7 @@
                 <button type="submit" class="btn btn-success">Submit</button>
             </div>
         </form>
+        <% } %>
         <% for(const review of place.reviews) { %>
             <div class="card mb-3">
                 <div class="card-body">
