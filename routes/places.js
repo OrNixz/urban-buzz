@@ -77,9 +77,17 @@ router.put(
   isValidObjectId("/places"),
   validatePlace,
   wrapAsync(async (req, res) => {
-    await Place.findByIdAndUpdate(req.params.id, { ...req.body.place });
+    const { id } = req.params;
+    let place = await Place.findById(id);
+
+    if (!place.author.equals(req.user._id)) {
+      req.flash("error", "You do not have permission to do that!");
+      return res.redirect(`/places`);
+    }
+
+    await Place.findByIdAndUpdate(id, { ...req.body.place });
     req.flash("success", "Successfully updated place!");
-    res.redirect(`/places/${req.params.id}`);
+    res.redirect(`/places/${id}`);
   })
 );
 
