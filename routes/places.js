@@ -4,9 +4,6 @@ const PlaceController = require("../controllers/places");
 const router = express.Router();
 const wrapAsync = require("../utils/wrapAsync");
 
-// Model
-const Place = require("../models/place");
-
 // Schema
 const { placeSchema } = require("../schemas/place");
 

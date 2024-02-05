@@ -1,3 +1,4 @@
+// Model
 const Place = require("../models/place");
 
 module.exports.index = async (req, res) => {
@@ -37,7 +38,7 @@ module.exports.edit = async (req, res) => {
 module.exports.update = async (req, res) => {
   await Place.findByIdAndUpdate(req.params.id, { ...req.body.place });
   req.flash("success", "Successfully updated place!");
-  res.redirect(`/places/${id}`);
+  res.redirect(`/places/${req.params.id}`);
 };
 
 module.exports.destroy = async (req, res) => {
