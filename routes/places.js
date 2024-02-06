@@ -4,19 +4,8 @@ const PlaceController = require("../controllers/places");
 const router = express.Router();
 const wrapAsync = require("../utils/wrapAsync");
 
-// Schema
-const { placeSchema } = require("../schemas/place");
-
 // Validate Place Middleware
-const validatePlace = (req, res, next) => {
-  const { error } = placeSchema.validate(req.body);
-  if (error) {
-    const message = error.details.map((el) => el.message).join(",");
-    return next(new ErrorHandler(message, 400));
-  } else {
-    next();
-  }
-};
+const { validatePlace } = require("../middlewares/validator");
 
 // Middleware for checking if ID is valid
 const isValidObjectId = require("../middlewares/isValidObjectId");
