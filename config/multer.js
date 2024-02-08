@@ -20,10 +20,12 @@ const upload = multer({
   storage: storage,
 
   fileFilter: function (req, file, cb) {
-    if (file.mimetype.startsWith("images/")) {
+    if (file.mimetype.startsWith("image/")) {
       cb(null, true);
     } else {
       cb(new ErrorHandler("Not an image! Please upload an image.", 405));
     }
   },
 });
+
+module.exports = upload;
