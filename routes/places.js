@@ -20,12 +20,12 @@ const { isAuthorPlace } = require("../middlewares/isAuthor");
 router
   .route("/")
   .get(wrapAsync(PlaceController.index))
-  // .post(isAuth, validatePlace, wrapAsync(PlaceController.store));
-  .post(isAuth, upload.array('image', 5), (req, res) => {
-    console.log(req.files);
-    console.log(req.body);
-    res.send("It worked!")
-  })
+  .post(
+    isAuth,
+    upload.array("image", 5),
+    validatePlace,
+    wrapAsync(PlaceController.store)
+  );
 
 router.get("/create", isAuth, PlaceController.create);
 

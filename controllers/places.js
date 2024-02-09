@@ -11,8 +11,13 @@ module.exports.create = (req, res) => {
 };
 
 module.exports.store = async (req, res, next) => {
+  const images = req.files.map((file) => ({
+    url: file.path,
+    filename: file.filename,
+  }));
   const place = new Place(req.body.place);
   place.author = req.user._id;
+  place.images = images;
   await place.save();
   req.flash("success", "Successfully made a new place!");
   res.redirect("/places");
