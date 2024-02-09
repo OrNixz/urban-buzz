@@ -1,6 +1,6 @@
 const multer = require("multer");
 const path = require("path");
-const ErrorHandler = require("../utils/ErrorHandler")
+const ExpressError = require("../utils/ErrorHandler");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -23,7 +23,7 @@ const upload = multer({
     if (file.mimetype.startsWith("image/")) {
       cb(null, true);
     } else {
-      cb(new ErrorHandler("Not an image! Please upload an image.", 405));
+      cb(new ExpressError("Not an image! Please upload an image.", 405));
     }
   },
 });

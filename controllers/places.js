@@ -1,3 +1,6 @@
+const ExpressError = require("../utils/ErrorHandler");
+const fs = require("fs");
+
 // Model
 const Place = require("../models/place");
 
@@ -41,7 +44,23 @@ module.exports.edit = async (req, res) => {
 };
 
 module.exports.update = async (req, res) => {
-  await Place.findByIdAndUpdate(req.params.id, { ...req.body.place });
+  const place = await Place.findByIdAndUpdate(req.params.id, {
+    ...req.body.place,
+  });
+  if (req.files && req.files.length > 0) {
+    place.images.forEach((image) => {
+      fs.unlink(image.url, (err) => {
+        new ExpressError(err);
+      });
+    });
+
+    const images = req.files.map((file) => ({
+      url: file.path,
+      filename: file.filename,
+    }));
+    place.images = images;
+    await place.save();
+  }
   req.flash("success", "Successfully updated place!");
   res.redirect(`/places/${req.params.id}`);
 };
