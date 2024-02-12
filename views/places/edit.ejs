@@ -61,16 +61,18 @@
 
     <% if (place.images.length > 0) { %>
     <div class="col-6">
-        <h5 class="text-center">Delete Images</h5>
-        <div class="form-group form-check">
+        <h5 class="text-center mb-4">Delete Images</h5>
+        <div class="form-group form-check mb-2">
             <input type="checkbox" id="checkAll" class="form-check-input">
             <label for="checkAll" class="form-check-label">Check All</label>
         </div>
-        <form action="/" class="d-flex flex-wrap">
+        <form action="/places/<%= place._id %>/images?_method=DELETE" method="POST" class="d-flex flex-wrap">
             <% place.images.forEach((image, index) => { %>
                 <div class="col-md-4">
-                    <div class="card mb-3">
-                        <img src="/images/<%= image.filename %>" class="card-img-top">
+                    <div class="card mb-3 mx-2">
+                        <div class="ratio ratio-4x3">
+                            <img src="/images/<%= image.filename %>" class="card-img-top">
+                        </div>
                         <div class="card-body">
                             <label class="custom-checkbox">
                                 <input type="checkbox" name="images[]" value="<%= image.url %>">
