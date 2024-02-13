@@ -2,6 +2,7 @@ const ejsMate = require("ejs-mate");
 const express = require("express");
 const ErrorHandler = require("./utils/ErrorHandler");
 const flash = require("connect-flash");
+const hereMaps = require("./utils/hereMaps");
 const LocalStrategy = require("passport-local");
 const methodOverride = require("method-override");
 const mongoose = require("mongoose");
@@ -55,7 +56,10 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/", (req, res) => {
+app.get("/", async (req, res) => {
+  const location = "Eiffel Tower"
+  const reqLocation = await hereMaps.geocode(location);
+  console.log(reqLocation);
   res.render("home");
 });
 
