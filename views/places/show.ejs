@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="/css/stars.css">
 
 <div class="row">
-    <div class="col-7">
+    <div class="col-6">
         <div class="card">
             <div id="carouselExample" class="carousel slide">
                 <div class="carousel-inner">
@@ -44,7 +44,8 @@
             <% } %>
         </div>
     </div>
-    <div class="col-5">
+    <div class="col-6">
+        <div style="width: 640px; height: 360px; margin-bottom: 5%" id="mapContainer"></div>
         <% if (currentUser) { %>
         <h4 class="mb-3">Leave a review</h4>
         <form action="/places/<%= place._id %>/reviews" method="POST" class="needs-validation mb-5" novalidate>
@@ -99,3 +100,27 @@
         <% } %>
     </div>
 </div>
+
+<script>
+    const place = <%- JSON.stringify(place) %>
+    const placeLocation = { lat: place.geometry.coordinates[0], lng: place.geometry.coordinates[1]};
+</script>
+
+<script>
+    // Initialize the platform object
+    const platform = new H.service.Platform({
+      "apikey": `A8LZInwBEG3Jcl3yduaGZmyAV3Ch_mxIHD_2pgaJMdQ`
+    });
+
+    // Obtain the default map types from the platform object
+    const maptypes = platform.createDefaultLayers();
+
+    // Instantiate (and display) the map
+    const map = new H.Map(
+      document.getElementById('mapContainer'),
+      maptypes.vector.normal.map,
+      {
+        zoom: 10,
+        center: placeLocation,
+      });
+</script>
