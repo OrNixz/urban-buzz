@@ -1,4 +1,5 @@
 const ExpressError = require("../utils/ErrorHandler");
+const { geometry } = require("../utils/hereMaps");
 const fs = require("fs");
 
 // Model
@@ -18,9 +19,15 @@ module.exports.store = async (req, res, next) => {
     url: file.path,
     filename: file.filename,
   }));
+
+  const geoData = await geometry(req.body.place.location);
+  console.log(geoData);
+
   const place = new Place(req.body.place);
   place.author = req.user._id;
   place.images = images;
+  place.geometry = geoData;
+
   await place.save();
   req.flash("success", "Successfully made a new place!");
   res.redirect("/places");
@@ -104,6 +111,7 @@ module.exports.destroyImage = async (req, res) => {
 
     req.flash("success", "Successfully deleted images!");
     return res.redirect(`/places/${id}/edit`)
+    
   } catch (error) {
     req.flash("error", "Failed to delete images!");
     return res.redirect(`/places/${id}/edit`);
