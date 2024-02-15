@@ -21,7 +21,6 @@ module.exports.store = async (req, res, next) => {
   }));
 
   const geoData = await geometry(req.body.place.location);
-  console.log(geoData);
 
   const place = new Place(req.body.place);
   place.author = req.user._id;

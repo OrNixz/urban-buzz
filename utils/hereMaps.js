@@ -18,7 +18,7 @@ const geometry = async (address) => {
     const { position } = await geocode(address);
     return {
       type: "Point",
-      coordinates: [position.lat, position.lng],
+      coordinates: [position.lng, position.lat],
     };
   } catch (error) {
     throw new ExpressError(error.message, 500);

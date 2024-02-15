@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Place = require("../models/place");
+const hereMaps = require("../utils/hereMaps");
 
 mongoose
   .connect("mongodb://127.0.0.1/urbanbuzz")
@@ -102,116 +103,48 @@ async function seedPlaces() {
       image:
         "https://images.unsplash.com/photo-1580834341580-8c17a3a630ca?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
-    {
-      title: "Sydney Opera House",
-      price: 45,
-      description:
-        "Architectural marvel and iconic performing arts venue on Sydney's harbor.",
-      location: "Sydney, Australia",
-      image:
-        "https://images.unsplash.com/photo-1540448051910-09cfadd5df61?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      title: "Yellowstone National Park",
-      price: 38,
-      description:
-        "First national park in the world, known for geothermal wonders and diverse wildlife.",
-      location: "Wyoming, USA",
-      image:
-        "https://images.unsplash.com/photo-1594073632422-ef9768f87fa4?q=80&w=1743&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      title: "Dubai Burj Khalifa",
-      price: 50,
-      description:
-        "Tallest building in the world, dominating the skyline of Dubai.",
-      location: "Dubai, United Arab Emirates",
-      image:
-        "https://images.unsplash.com/flagged/photo-1559717865-a99cac1c95d8?q=80&w=1771&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      title: "The Louvre",
-      price: 18,
-      description:
-        "World's largest art museum and historic monument in Paris, home to thousands of artworks.",
-      location: "Paris, France",
-      image:
-        "https://images.unsplash.com/photo-1499634231146-3393ed854a33?q=80&w=1773&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      title: "Victoria Falls",
-      price: 30,
-      description:
-        "Majestic waterfall on the Zambezi River, bordering Zambia and Zimbabwe.",
-      location: "Livingstone, Zambia",
-      image:
-        "https://images.unsplash.com/photo-1619029383069-21d494034ed7?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      title: "Antelope Canyon",
-      price: 25,
-      description:
-        "Narrow slot canyon with stunning rock formations and light beams.",
-      location: "Arizona, USA",
-      image:
-        "https://images.unsplash.com/photo-1597673814716-4a1e58a1f6af?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      title: "Marrakech Medina",
-      price: 22,
-      description:
-        "Historic walled city with vibrant markets, palaces, and gardens in Morocco.",
-      location: "Marrakech, Morocco",
-      image:
-        "https://images.unsplash.com/photo-1589008591357-0f2873177002?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      title: "Giza Pyramids",
-      price: 24,
-      description:
-        "Ancient Egyptian structures including the Great Pyramid of Giza and Sphinx.",
-      location: "Giza, Egypt",
-      image:
-        "https://images.unsplash.com/photo-1600520611035-84157ad4084d?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      title: "Galápagos Islands",
-      price: 55,
-      description:
-        "Archipelago of volcanic islands, known for unique wildlife and Charles Darwin's studies.",
-      location: "Ecuador",
-      image:
-        "https://images.unsplash.com/photo-1581875598938-cac706391c98?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      title: "Great Wall of China",
-      price: 40,
-      description:
-        "Ancient wall spanning thousands of miles, built to protect China from invaders.",
-      location: "China",
-      image:
-        "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
   ];
 
   try {
-    const newPlace = places.map((place) => {
-      return {
-        ...place,
-        author: "65b9e0250f8b37a77e5aa929",
-        images: {
-          url: "public\\images\\image-1707719823546-59.jpg",
-          filename: "image-1707719823546-59.JPG",
-        },
-      };
+    const geoDataPromises = places.map(async (place) => {
+      try {
+        return await hereMaps.geometry(place.location);
+      } catch (error) {
+        console.error("Error fetching geodata for", place.title, error);
+        // Use a fallback geodata (e.g., placeholder coordinates)
+        return {
+          type: "Point",
+          coordinates: [116.4074, 39.9042],
+        };
+      }
     });
+
+    const geoData = await Promise.all(geoDataPromises);
+
     await Place.deleteMany({});
-    await Place.insertMany(newPlace);
+    const newPlaces = [];
+    for (let i = 0; i < places.length; i++) {
+      // Check if geodata exists before accessing properties
+      if (geoData[i]) {
+        newPlaces.push({
+          ...places[i],
+          author: "65b9e0250f8b37a77e5aa929",
+          images: {
+            url: "public\\images\\image-1707719823546-59.jpg",
+            filename: "image-1707719823546-59.JPG",
+          },
+          geometry: geoData[i],
+        });
+      } else {
+        console.error("Missing geodata for", place.title, "- using fallback");
+      }
+    }
+    await Place.insertMany(newPlaces);
     console.log("Data saved successfully");
   } catch (err) {
-    console.log("An error occured while saving data");
+    console.error("Error saving data:", err);
   } finally {
-    mongoose.disconnect();
+    await mongoose.disconnect();
   }
 }
 

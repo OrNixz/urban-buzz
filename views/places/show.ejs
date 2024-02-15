@@ -6,13 +6,19 @@
         <div class="card">
             <div id="carouselExample" class="carousel slide">
                 <div class="carousel-inner">
-                    <div class="ratio ratio-16x9">
-                        <% place.images.forEach((image, index) => { %>
-                            <div class="carousel-item <%= index === 0 ? "active": "" %>">
-                                <img src="/images/<%= image.filename %>" class="d-block w-100" alt="<%= place.title %>">
-                            </div>
-                        <% }) %>
-                    </div>
+                    <% if (place.images.length) { %>
+                        <div class="ratio ratio-16x9">
+                            <% place.images.forEach((image, index) => { %>
+                                <div class="carousel-item <%= index === 0 ? "active": "" %>">
+                                    <img src="/images/<%= image.filename %>" class="d-block w-100" alt="<%= place.title %>">
+                                </div>
+                            <% }) %>
+                        </div>
+                    <% } else { %>
+                        <div class="carousel-item <%= index === 0 ? "active": "" %>">
+                            <img src="https://images.unsplash.com/photo-1431274172761-fca41d930114?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZWlmZmVsJTIwdG93ZXJ8ZW58MHwwfDB8fHww" class="d-block w-100" alt="<%= place.title %>">
+                        </div>
+                    <% } %>
                 </div>
                 <% if (place.images.length > 1) { %>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
@@ -103,7 +109,7 @@
 
 <script>
     const place = <%- JSON.stringify(place) %>
-    const placeLocation = { lat: place.geometry.coordinates[0], lng: place.geometry.coordinates[1]};
+    const placeLocation = { lng: place.geometry.coordinates[0], lat: place.geometry.coordinates[1] };
     const content = '<div>' +
         `<h5>${place.title}</h5>` +
         `<p>Price: ${place.price}</p>` +
