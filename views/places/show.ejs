@@ -104,12 +104,49 @@
 <script>
     const place = <%- JSON.stringify(place) %>
     const placeLocation = { lat: place.geometry.coordinates[0], lng: place.geometry.coordinates[1]};
+    const content = '<div>' +
+        `<h5>${place.title}</h5>` +
+        `<p>Price: ${place.price}</p>` +
+        '</div>';
 </script>
 
 <script>
+    function addMarker(group, coordinates, html) {
+        // Define a variable holding SVG mark-up that defines an icon image:
+        const svgMarker = `<svg viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M512 85.333333c-164.949333 0-298.666667 133.738667-298.666667 298.666667 0 164.949333 298.666667 554.666667 298.666667 554.666667s298.666667-389.717333 298.666667-554.666667c0-164.928-133.717333-298.666667-298.666667-298.666667z m0 448a149.333333 149.333333 0 1 1 0-298.666666 149.333333 149.333333 0 0 1 0 298.666666z" fill="#cc3000"></path></g></svg>`
+        
+        // Create an icon, an object holding the latitude and longitude, and a marker:
+        const icon = new H.map.Icon(svgMarker, { size: { h: 50, w: 50 } });
+        const marker = new H.map.Marker(placeLocation, { icon: icon });
+
+        // add custom data to the marker
+        marker.setData(html);
+        group.addObject(marker)
+    }
+    
+    function addInfoBubble(map) {
+        const group = new H.map.Group();
+
+        map.addObject(group);
+
+        // add 'tap' event listener, that opens info bubble, to the group
+        group.addEventListener("tap", (e) => {
+            // event target is the marker itself, group is a parent event target
+            // for all objects that it contains
+            const bubble = new H.ui.InfoBubble(e.target.getGeometry(), {
+                // read custom data
+                content: e.target.getData()
+            });
+            // show info bubble
+            ui.addBubble(bubble);
+        }, false)
+
+        addMarker(group, placeLocation, content)
+    }
+
     // Initialize the platform object
     const platform = new H.service.Platform({
-      "apikey": `A8LZInwBEG3Jcl3yduaGZmyAV3Ch_mxIHD_2pgaJMdQ`
+        "apikey": `A8LZInwBEG3Jcl3yduaGZmyAV3Ch_mxIHD_2pgaJMdQ`
     });
 
     // Obtain the default map types from the platform object
@@ -117,27 +154,18 @@
 
     // Instantiate (and display) the map
     const map = new H.Map(
-      document.getElementById('mapContainer'),
-      defaultLayers.vector.normal.map,
-      {
-        zoom: 10,
-        center: placeLocation,
-      });
-    
-    // Define a variable holding SVG mark-up that defines an icon image:
-    const svgMarker = `<svg viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M512 85.333333c-164.949333 0-298.666667 133.738667-298.666667 298.666667 0 164.949333 298.666667 554.666667 298.666667 554.666667s298.666667-389.717333 298.666667-554.666667c0-164.928-133.717333-298.666667-298.666667-298.666667z m0 448a149.333333 149.333333 0 1 1 0-298.666666 149.333333 149.333333 0 0 1 0 298.666666z" fill="#cc3000"></path></g></svg>`
-
-    // Create an icon, an object holding the latitude and longitude, and a marker:
-    const icon = new H.map.Icon(svgMarker, { size: { h: 50, w: 50 } });
-    const marker = new H.map.Marker(placeLocation, { icon: icon });
-    
-    // Add the marker to the map and center the map at the location of the marker:
-    map.addObject(marker);
-    map.setCenter(placeLocation);
+        document.getElementById('mapContainer'),
+        defaultLayers.vector.normal.map,
+        {
+            zoom: 10,
+            center: placeLocation,
+        });
 
     // Create the default UI:
     const ui = H.ui.UI.createDefault(map, defaultLayers, "en-US");
     
     // The behavior variable implements default interactions for pan/zoom (also on mobile touch environments).
     const behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+
+    addInfoBubble(map)
 </script>
