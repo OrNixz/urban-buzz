@@ -1,0 +1,68 @@
+.navbar {
+    background-color: transparent !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+
+.navbar-brand {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.navbar-brand:hover {
+    text-decoration: none;
+}
+
+.navbar-nav {
+    justify-content: flex-end;
+}
+
+.navbar-nav .nav-link {
+    color: #fff;
+}
+
+.navbar-nav .nav-link:hover {
+    text-decoration: underline;
+    padding-bottom: 2px;
+}
+
+.hero-section {
+    background-image: url("https://images.unsplash.com/photo-1534655378251-8868efac5733?q=80&w=2007&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+}
+
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: -1;
+}
+
+.hero-section h1, .hero-section h4 {
+    color: #fff;
+    text-align: center;
+}
+
+.btn-outline-light {
+    color: #fff;
+    border-color: #fff;
+}
+
+.btn-group-center {
+    display: flex;
+    justify-content: center;
+}
