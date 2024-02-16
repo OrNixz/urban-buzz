@@ -7,7 +7,14 @@ const Place = require("../models/place");
 
 module.exports.index = async (req, res) => {
   const places = await Place.find();
-  res.render("places/index", { places });
+  const clusteringPlace = places.map((place) => {
+    return {
+      latitude: place.geometry.coordinates[1],
+      longitude: place.geometry.coordinates[0],
+    };
+  });
+  const clusteredPlace = JSON.stringify(clusteringPlace);
+  res.render("places/index", { places, clusteredPlace });
 };
 
 module.exports.create = (req, res) => {
@@ -51,7 +58,7 @@ module.exports.edit = async (req, res) => {
 
 module.exports.update = async (req, res) => {
   const { place } = req.body;
-  
+
   const geoData = await geometry(place.location);
 
   const newPlace = await Place.findByIdAndUpdate(req.params.id, {

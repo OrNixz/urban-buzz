@@ -1,5 +1,6 @@
 <% layout("layouts/app") %>
 <h1 class="mb-3 pb-2">All Places</h1>
+<div id="mapContainer" style="width: 100%; height: 500px; margin-bottom: 5%;"></div>
 <% for (const place of places) { %>
     <div class="card mb-3">
         <div class="row">
@@ -23,3 +24,59 @@
         </div>
     </div>
 <% } %>
+
+<script>
+    const clusteredPlace = <%- clusteredPlace %>
+</script>
+
+<script>
+    function startClustering(map, data) {
+    // First we need to create an array of DataPoint objects,
+    // for the ClusterProvider
+        const dataPoints = data.map(function (item) {
+            return new H.clustering.DataPoint(item.latitude, item.longitude);
+        });
+
+        // Create a clustering provider with custom options for clusterizing the input
+        const clusteredDataProvider = new H.clustering.Provider(dataPoints, {
+            clusteringOptions: {
+            // Maximum radius of the neighbourhood
+            eps: 32,
+            // minimum weight of points required to form a cluster
+            minWeight: 2
+            }
+        });
+
+        // Create a layer tha will consume objects from our clustering provider
+        const clusteringLayer = new H.map.layer.ObjectLayer(clusteredDataProvider);
+
+        // To make objects from clustering provder visible,
+        // we need to add our layer to the map
+        map.addLayer(clusteringLayer);
+    }
+
+    // Initialize the platform object
+    const platform = new H.service.Platform({
+        "apikey": `A8LZInwBEG3Jcl3yduaGZmyAV3Ch_mxIHD_2pgaJMdQ`
+    });
+
+    // Obtain the default map types from the platform object
+    const defaultLayers = platform.createDefaultLayers();
+
+    // Instantiate (and display) the map
+    const map = new H.Map(
+        document.getElementById('mapContainer'),
+        defaultLayers.vector.normal.map,
+        {
+            zoom: 2,
+            center: { lng: 110.7034266, lat: -0.9730197 },
+        });
+
+    // Create the default UI:
+    const ui = H.ui.UI.createDefault(map, defaultLayers, "en-US");
+    
+    // The behavior variable implements default interactions for pan/zoom (also on mobile touch environments).
+    const behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+
+    startClustering(map, clusteredPlace);
+</script>
