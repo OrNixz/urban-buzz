@@ -29,4 +29,36 @@ Urban Buzz caters to a diverse range of travelers, including:
 - Place Validation and Authorization (validate place data during creation and update.)
 - Geolocation Handling (fetching geolocation data for a place.)
 - Review Management (deleting associated reviews when a place is deleted.)
-- Review operations (create, read, and delete reviews)
+- Review Operations (create, read, and delete reviews)
+
+
+## 3. Getting Started
+
+### Prerequisites:
+Before you begin, make sure you have already installed [Node.js](https://nodejs.org/), [NPM](https://www.npmjs.com/), and [MongoDB](https://www.mongodb.com/).
+
+### Installation: 
+1. Clone the repository: 
+`https://github.com/OrNixz/urban-buzz.git`
+
+2. Navigate to the project directory:
+`cd your-project-name`
+
+3. Install dependencies: 
+`npm install`
+
+### Database Setup:
+Run the MongoDB server by typing `mongod` in the command prompt, and type `mongosh` to interact with the MongoDB server.
+
+### Connection to the Database:
+```
+mongoose
+  .connect("mongodb://127.0.0.1/urbanbuzz")
+  .then((result) => {
+    console.log("Connected to MongoDB");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+```
