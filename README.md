@@ -1,4 +1,3 @@
-
 # Urban Buzz
 
 ## 1. Overview
@@ -93,7 +92,7 @@ Oh yeah, I forgot something to say, although this is optional. You can create th
    - [Multer](https://www.npmjs.com/package/multer): Middleware for file uploads.
 
 
-## Screenshots
+## 5. Screenshots
 
 ### 1. Home page
 ![](https://github.com/OrNixz/urban-buzz/blob/main/screenshots/Home.png)
@@ -121,3 +120,9 @@ Oh yeah, I forgot something to say, although this is optional. You can create th
 
 ### 9. Edit place
 ![](https://github.com/OrNixz/urban-buzz/blob/main/screenshots/Edit%20place.png)
+
+## 6. Contributing
+We welcome contributions to this project! If you find a bug or have suggestions for improvements, don't hesitate to submit an issue or pull request.
+
+## 7. Credits
+This project was inspired by the **belajar-membangun-aplikasi-studi-kasus-directory-listing-app** course on the Full-Stack Javascript roadmap, with a slight distinction and additional styling that suits my style. Shout out to the creator who made this project [@lunadiotic](https://github.com/lunadiotic)
