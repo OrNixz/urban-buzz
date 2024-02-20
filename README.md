@@ -1,3 +1,4 @@
+
 # Urban Buzz
 
 ## 1. Overview
@@ -62,3 +63,29 @@ mongoose
   });
 
 ```
+
+After getting things done, you can run the application by `nodemon app.js` (obviously you must install nodemon before) or `node app.js`.
+
+
+## 4. Technologies Used
+- Platform and Runtime: 
+   - [Node.js](https://nodejs.org/en): JavaScript runtime platform for server-side applications.
+- Package Management:
+   - [NPM](https://www.npmjs.com/): Package manager for installing and managing project dependencies.
+- Framework: 
+   - [Express](https://expressjs.com/): Web framework for Node.js.
+- Database and ODM: 
+   - [MongoDB](https://www.mongodb.com/): NoSQL database.
+   - [Mongose](https://mongoosejs.com/): ODM for MongoDB.
+- Template Engine: 
+   - [EJS](https://ejs.co/): Template engine for HTML views.
+- Input Validation: 
+   - [Joi](https://joi.dev/): Input validation library.
+- Authentication and Session Middleware: 
+   - [Passport](https://www.passportjs.org/): Authentication middleware.
+   - [Passport-Local-Mongoose](https://www.npmjs.com/package/passport-local-mongoose): Passport plugin for local authentication.
+   - [Express Session](https://www.npmjs.com/package/express-session): Express middleware for user sessions.
+   - [Connect-Flash](https://www.npmjs.com/package/connect-flash): Express middleware for flash messages.
+- Other Middleware: 
+   - [Method-Override](https://www.npmjs.com/package/method-override): Middleware to support HTTP methods.
+   - [Multer](https://www.npmjs.com/package/multer): Middleware for file uploads.
