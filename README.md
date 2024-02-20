@@ -65,7 +65,7 @@ mongoose
 
 After getting things done, you can run the application by `nodemon app.js` (obviously you must install nodemon before) or `node app.js`.
 
-Oh yeah, I forgot something to say, although this is optional. You can create the places and their details by typing `node seeds/place.js`, and for the images in each, you can search the uploads `folder onseeds/uploads`.
+Oh yeah, I forgot something to say, although this is optional. You can create the places and their details by typing `node seeds/place.js`, and for the images in each, you can search the uploads folder on `seeds/uploads`.
 
 
 ## 4. Technologies Used
