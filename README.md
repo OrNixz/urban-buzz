@@ -66,6 +66,8 @@ mongoose
 
 After getting things done, you can run the application by `nodemon app.js` (obviously you must install nodemon before) or `node app.js`.
 
+Oh yeah, I forgot something to say, although this is optional. You can create the places and their details by typing `node seeds/place.js`, and for the images in each, you can search the uploads `folder onseeds/uploads`.
+
 
 ## 4. Technologies Used
 - Platform and Runtime: 
@@ -89,3 +91,33 @@ After getting things done, you can run the application by `nodemon app.js` (obvi
 - Other Middleware: 
    - [Method-Override](https://www.npmjs.com/package/method-override): Middleware to support HTTP methods.
    - [Multer](https://www.npmjs.com/package/multer): Middleware for file uploads.
+
+
+## Screenshots
+
+### 1. Home page
+![](https://github.com/OrNixz/urban-buzz/blob/main/screenshots/Home.png)
+
+### 2. Register page
+![](https://github.com/OrNixz/urban-buzz/blob/main/screenshots/Register.png)
+
+### 3. Login page
+![](https://github.com/OrNixz/urban-buzz/blob/main/screenshots/Login.png)
+
+### 4. Place map location page
+![](https://github.com/OrNixz/urban-buzz/blob/main/screenshots/Places%20map%20location.png)
+
+### 5. Places overview page
+![](https://github.com/OrNixz/urban-buzz/blob/main/screenshots/Places%20overview.png)
+
+### 6. Place details and its reviews
+![](https://github.com/OrNixz/urban-buzz/blob/main/screenshots/Place%20details%20and%20its%20reviews.png)
+
+### 7. Place details when the user logs in
+![](https://github.com/OrNixz/urban-buzz/blob/main/screenshots/Place%20details%20when%20the%20user%20logs%20in.png)
+
+### 8. Add place page
+![](https://github.com/OrNixz/urban-buzz/blob/main/screenshots/Add%20place.png)
+
+### 9. Edit place
+![](https://github.com/OrNixz/urban-buzz/blob/main/screenshots/Edit%20place.png)
