@@ -20,3 +20,13 @@ Urban Buzz caters to a diverse range of travelers, including:
 - Families
 - Travel Enthusiasts
 - Solo Adventurers
+
+## 2. Features
+
+- User Authentication and Authorization (allows users to register, then login with their accounts, and logout.)
+- Place CRUD Operations (List, create, show, edit, update, and delete places.)
+- Image Management (upload and delete images for a place, and you can upload up to five photos).
+- Place Validation and Authorization (validate place data during creation and update.)
+- Geolocation Handling (fetching geolocation data for a place.)
+- Review Management (deleting associated reviews when a place is deleted.)
+- Review operations (create, read, and delete reviews)
