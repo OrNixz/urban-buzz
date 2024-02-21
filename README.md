@@ -93,33 +93,36 @@ Oh yeah, I forgot something to say, although this is optional. You can create th
 
 
 ## 5. Screenshots
+<details>
+  <summary>Click to see!</summary>
 
-### 1. Home page
-![](https://github.com/OrNixz/urban-buzz/blob/main/screenshots/Home.png)
-
-### 2. Register page
-![](https://github.com/OrNixz/urban-buzz/blob/main/screenshots/Register.png)
-
-### 3. Login page
-![](https://github.com/OrNixz/urban-buzz/blob/main/screenshots/Login.png)
-
-### 4. Place map location page
-![](https://github.com/OrNixz/urban-buzz/blob/main/screenshots/Places%20map%20location.png)
-
-### 5. Places overview page
-![](https://github.com/OrNixz/urban-buzz/blob/main/screenshots/Places%20overview.png)
-
-### 6. Place details and its reviews
-![](https://github.com/OrNixz/urban-buzz/blob/main/screenshots/Place%20details%20and%20its%20reviews.png)
-
-### 7. Place details when the user logs in
-![](https://github.com/OrNixz/urban-buzz/blob/main/screenshots/Place%20details%20when%20the%20user%20logs%20in.png)
-
-### 8. Add place page
-![](https://github.com/OrNixz/urban-buzz/blob/main/screenshots/Add%20place.png)
-
-### 9. Edit place
-![](https://github.com/OrNixz/urban-buzz/blob/main/screenshots/Edit%20place.png)
+  ### 1. Home page
+  ![](https://github.com/OrNixz/urban-buzz/blob/main/screenshots/Home.png)
+  
+  ### 2. Register page
+  ![](https://github.com/OrNixz/urban-buzz/blob/main/screenshots/Register.png)
+  
+  ### 3. Login page
+  ![](https://github.com/OrNixz/urban-buzz/blob/main/screenshots/Login.png)
+  
+  ### 4. Place map location page
+  ![](https://github.com/OrNixz/urban-buzz/blob/main/screenshots/Places%20map%20location.png)
+  
+  ### 5. Places overview page
+  ![](https://github.com/OrNixz/urban-buzz/blob/main/screenshots/Places%20overview.png)
+  
+  ### 6. Place details and its reviews
+  ![](https://github.com/OrNixz/urban-buzz/blob/main/screenshots/Place%20details%20and%20its%20reviews.png)
+  
+  ### 7. Place details when the user logs in
+  ![](https://github.com/OrNixz/urban-buzz/blob/main/screenshots/Place%20details%20when%20the%20user%20logs%20in.png)
+  
+  ### 8. Add place page
+  ![](https://github.com/OrNixz/urban-buzz/blob/main/screenshots/Add%20place.png)
+  
+  ### 9. Edit place
+  ![](https://github.com/OrNixz/urban-buzz/blob/main/screenshots/Edit%20place.png)
+</details>
 
 ## 6. Contributing
 We welcome contributions to this project! If you find a bug or have suggestions for improvements, don't hesitate to submit an issue or pull request.
