@@ -1,6 +1,8 @@
-# Urban Buzz
+<h1 align="center"><br>
+  🏨⛰️✈️ Urban Buzz ✈️⛰️🏨 
+</h1><br>
 
-## 1. Overview
+## 1. Overview 📖
 
 ### Project Description
 
@@ -21,7 +23,7 @@ Urban Buzz caters to a diverse range of travelers, including:
 - Travel Enthusiasts
 - Solo Adventurers
 
-## 2. Features
+## 2. Features ✨
 
 - User Authentication and Authorization (allows users to register, then login with their accounts, and logout.)
 - Place CRUD Operations (List, create, show, edit, update, and delete places.)
@@ -32,7 +34,7 @@ Urban Buzz caters to a diverse range of travelers, including:
 - Review Operations (create, read, and delete reviews)
 
 
-## 3. Getting Started
+## 3. Getting Started 🚀
 
 ### Prerequisites:
 Before you begin, make sure you have already installed [Node.js](https://nodejs.org/), [NPM](https://www.npmjs.com/), and [MongoDB](https://www.mongodb.com/).
@@ -68,7 +70,7 @@ After getting things done, you can run the application by `nodemon app.js` (obvi
 Oh yeah, I forgot something to say, although this is optional. You can create the places and their details by typing `node seeds/place.js`, and for the images in each, you can search the uploads folder on `seeds/uploads`.
 
 
-## 4. Technologies Used
+## 4. Technologies Used 🔧
 - Platform and Runtime: 
    - [Node.js](https://nodejs.org/en): JavaScript runtime platform for server-side applications.
 - Package Management:
@@ -92,7 +94,7 @@ Oh yeah, I forgot something to say, although this is optional. You can create th
    - [Multer](https://www.npmjs.com/package/multer): Middleware for file uploads.
 
 
-## 5. Screenshots
+## 5. Screenshots 📷
 <details>
   <summary>Click to see!</summary>
 
@@ -124,8 +126,8 @@ Oh yeah, I forgot something to say, although this is optional. You can create th
   ![](https://github.com/OrNixz/urban-buzz/blob/main/screenshots/Edit%20place.png)
 </details>
 
-## 6. Contributing
+## 6. Contributing 🤝
 We welcome contributions to this project! If you find a bug or have suggestions for improvements, don't hesitate to submit an issue or pull request.
 
-## 7. Credits
-This project was inspired by the **belajar-membangun-aplikasi-studi-kasus-directory-listing-app** course on the Full-Stack Javascript roadmap, with a slight distinction and additional styling that suits my style. Shout out to the creator who made this project [@lunadiotic](https://github.com/lunadiotic)
+## 7. Credits 🙌
+This project was inspired by the **Learn to Build a Directory Listing App Case Study Application** course on the Full-Stack Javascript roadmap, with a slight distinction and additional styling that suits my style. Shout out to the creator who made this project [@lunadiotic](https://github.com/lunadiotic)
